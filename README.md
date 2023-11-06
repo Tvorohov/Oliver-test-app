@@ -5,13 +5,12 @@ Custom Layout Designer is an offline React application that enables users to cre
 
 ## Features
 
-- **Flexible Containers**: Create containers that can hold other components.
-- **Customizable Buttons**: Modify button text as needed.
-- **CSS Property Editing**: Adjust properties such as width, height, display, position, color (text and background), padding, and margin with intuitive UI controls.
-- **State Management**: Application state is managed using your chosen state management solution.
+- **Flexible Containers**: Create containers that can encapsulate other components.
+- **Customizable Buttons**: Create buttons with customizable text and styles.
+- **CSS Property Editing**: Edit CSS properties of components using a UI.
+- **State Management**: The application's state is managed using Redux Toolkit.
+- **Save and Load**: Save and load layouts from local storage.
 
-## Usage
-After launching the application, you can start designing your layout by using the UI controls provided to add sections and buttons and customize their properties.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
