@@ -3,35 +3,19 @@ import React from 'react';
 import Section from '@/components/Section';
 import Button from '@/components/Button';
 import {  useDispatch, useSelector } from 'react-redux';
-import { ComponentProps, ComponentType, selectComponent, selectComponents } from '@/store/slices/layoutSlice';
+import {  ComponentType, selectComponent, selectComponents } from '@/store/slices/layoutSlice';
 import { RootState } from '@/store/store';
 import { Controls } from '@/components/Controls';
 
-import style from  './app.module.css';
-
-// const loadLayoutFromLocalStorage = (): ComponentProps[] => {
-//   const savedLayout = localStorage.getItem('layout');
-//   return savedLayout ? JSON.parse(savedLayout) : [initialComponent];
-// };
+import cls from  './app.module.css';
 
 const App: React.FC = () => {
   const components = useSelector((state: RootState) => selectComponents(state));
   const dispatch = useDispatch();
-
-  // const saveLayoutToLocalStorage = (layout: ComponentProps[]) => {
-  //   localStorage.setItem('layout', JSON.stringify(layout));
-  // };
-  
-
-  // useEffect(() => {
-  //   saveLayoutToLocalStorage(components);
-  // }, [components]);
-
   const handleSelectComponent = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();
     const target = event.target as HTMLElement;
     const { id } = target;
-
       dispatch(selectComponent(id));
   }
 
@@ -61,7 +45,7 @@ const App: React.FC = () => {
       case ComponentType.ROOT:
         return (
           <div 
-            className={style.root}
+            className={cls.root}
             key={id} 
             id={id} 
             onClick={handleSelectComponent}>
