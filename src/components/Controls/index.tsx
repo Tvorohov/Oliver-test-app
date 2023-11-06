@@ -15,6 +15,10 @@ const styleControls = [
   { label: 'Padding Right', name: 'paddingRight', onlyNumbers: true },
   { label: 'Padding Left', name: 'paddingLeft', onlyNumbers: true },
   { label: 'Margin', name: 'margin', onlyNumbers: true },
+  { label: 'Margin top', name: 'marginTop', onlyNumbers: true },
+  { label: 'Margin bottom', name: 'marginBottom', onlyNumbers: true },
+  { label: 'Margin Right', name: 'marginRight', onlyNumbers: true },
+  { label: 'Margin Left', name: 'marginLeft', onlyNumbers: true },
   { label: 'Color', name: 'color', type: 'color' },
   { label: 'Background Color', name: 'backgroundColor', type: 'color' },
 ];
