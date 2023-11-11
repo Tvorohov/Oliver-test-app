@@ -1,3 +1,4 @@
+import { BackgroundControl } from '../BackgroundControl';
 import { ControlType } from '../Controls/controlsScheme'
 import { DimensionControl } from '../DimensionControl';
 import { DisplayControl } from '../DisplayControl';
@@ -24,6 +25,8 @@ export const RenderControls = ({
       return <InlineInput name={name} label={label} />;
     case ControlType.TYPOGRAPHY_CONTROL:
       return <TypographyControl />;
+    case ControlType.BACKGROUND_CONTROL:
+      return <BackgroundControl />;
     default:
       return null;
   }

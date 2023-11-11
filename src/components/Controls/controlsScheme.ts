@@ -1,9 +1,9 @@
 export enum ControlType {
   INLINE_INPUT = 'INLINE_INPUT',
   DIMENSION_CONTROL = 'DIMENSION_CONTROL',
-  COLOR_CONTROL = 'COLOR_CONTROL',
   DISPLAY_CONTROL = 'DISPLAY_CONTROL',
   TYPOGRAPHY_CONTROL = 'TYPOGRAPHY_CONTROL',
+  BACKGROUND_CONTROL = 'BACKGROUND_CONTROL'
 }
 
 export const styleControlMap = [
@@ -28,11 +28,6 @@ export const styleControlMap = [
     type: ControlType.DIMENSION_CONTROL,
   },
   {
-    label: 'Background Color',
-    name: 'backgroundColor',
-    type: ControlType.COLOR_CONTROL,
-  },
-  {
     label: 'Display',
     name: 'display',
     type: ControlType.DISPLAY_CONTROL,
@@ -41,5 +36,10 @@ export const styleControlMap = [
     label: 'Typography',
     name: 'typography',
     type: ControlType.TYPOGRAPHY_CONTROL,
+  },
+  {
+    label: 'Background',
+    name: 'background',
+    type: ControlType.BACKGROUND_CONTROL,
   }
 ]

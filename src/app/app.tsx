@@ -11,9 +11,7 @@ import { setupComponents } from '@/store/slices/layoutSlice';
 
 
 const App: React.FC = () => {
-
   const dispatch = useDispatch();
-
   useEffect(() => {
     const preloadedState = loadState();
     if (preloadedState) {
