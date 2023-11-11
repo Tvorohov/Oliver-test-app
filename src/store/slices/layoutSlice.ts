@@ -101,10 +101,9 @@ export const layoutSlice = createSlice({
         state.components[state.selectedComponentId].styles[name] = value;
       }
     },
-    updateText(state, action: PayloadAction<{ text: string }>) {
-      const { text } = action.payload;
+    updateText(state, action: PayloadAction<string>) {
       if (state.selectedComponentId) {
-        state.components[state.selectedComponentId].text = text;
+        state.components[state.selectedComponentId].text = action.payload;
       }
     },
     setupComponents: (state, action: PayloadAction<LayoutState>) => {

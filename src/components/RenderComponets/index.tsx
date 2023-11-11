@@ -1,7 +1,7 @@
 import { selectComponents, selectComponent, ComponentType } from '@/store/slices/layoutSlice';
 import { RootState } from '@/store/store';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '../Button';
+import { RenderButton } from '../RenderButton';
 import Section from '../Section';
 
 import cls from './style.module.css';
@@ -31,7 +31,7 @@ export const RenderComponets = () => {
         );
       case ComponentType.BUTTON:
         return (
-          <Button
+          <RenderButton
             key={id}
             id={id}
             styles={component.styles}
