@@ -1,14 +1,13 @@
 import { LayoutState } from '@/store/slices/layoutSlice';
-import { RootState } from '@/store/store';
 
-export const loadState = (): RootState | undefined => {
+export const loadState = (): LayoutState | undefined => {
   if (typeof window === 'undefined') {
     return undefined; // Return undefined if we're on the server
   }
   try {
     const serializedState = localStorage.getItem('layout');
     if (serializedState === null) return undefined;
-    return { layout: JSON.parse(serializedState) as LayoutState };
+    return JSON.parse(serializedState) as LayoutState;
   } catch (err) {
     console.error('Failed to load state:', err);
     return undefined;

@@ -31,7 +31,7 @@ export const ColorInput = ({ value = defaultColor, onChange }: ColorInputProps) 
             <Popover.Trigger>
               <button
                 className={cls.colorButton}
-                style={{ backgroundColor: color }} />
+                style={{ backgroundColor: value }} />
             </Popover.Trigger>
             <Popover.Content>
               <HexColorPicker color={value} onChange={handleColorChange} />

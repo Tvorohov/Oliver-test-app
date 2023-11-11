@@ -6,19 +6,23 @@ const rootReducer = combineReducers({
   layout: layoutReducer,
 });
 
-const preloadedState = loadState();
+
+let isInitialized = false;
 
 const localStorageMiddleware: Middleware<{}, RootState> = store => next => action => {
   const result = next(action);
-  if (typeof window !== 'undefined') {
-    saveState(store.getState().layout);
+  if (isInitialized && typeof window !== 'undefined') {
+    const currentState = store.getState().layout;
+    if (currentState !== initialState) {
+      saveState(currentState);
+    }
   }
+  isInitialized = true;
   return result;
 };
 
 export const store = configureStore({
   reducer: rootReducer,
-  preloadedState: preloadedState || { layout: initialState },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(localStorageMiddleware)
 });

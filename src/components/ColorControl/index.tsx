@@ -1,7 +1,7 @@
-import { Flex, Text, Box } from "@radix-ui/themes"
-import { ColorInput } from "../ColorInput";
-import { useDispatch, useSelector } from "react-redux";
-import { getSelectedComponentStyles, updateStyle } from "@/store/slices/layoutSlice";
+import { Flex, Text, Box } from '@radix-ui/themes'
+import { ColorInput } from '../ColorInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSelectedComponentStyles, updateStyle } from '@/store/slices/layoutSlice';
 
 
 interface ColorControlProps {
@@ -11,7 +11,6 @@ interface ColorControlProps {
 
 
 export const ColorControl = ({ label, name }: ColorControlProps) => {
-
   const dispatch = useDispatch();
   const styles = useSelector(getSelectedComponentStyles);
 

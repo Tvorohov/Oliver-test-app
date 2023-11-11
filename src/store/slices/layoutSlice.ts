@@ -69,7 +69,7 @@ export const layoutSlice = createSlice({
       }
     },
     selectComponent: (state, action: PayloadAction<string>) => {
-      if(action.payload === ComponentType.ROOT) {
+      if (action.payload === ComponentType.ROOT) {
         state.selectedComponentId = null;
         return;
       } else {
@@ -87,7 +87,7 @@ export const layoutSlice = createSlice({
       };
 
       deleteRecursively(action.payload);
-      
+
     },
     updateStyles: (state, action: PayloadAction<{ styles: StyleProps }>) => {
       const { styles } = action.payload;
@@ -106,22 +106,33 @@ export const layoutSlice = createSlice({
       if (state.selectedComponentId) {
         state.components[state.selectedComponentId].text = text;
       }
+    },
+    setupComponents: (state, action: PayloadAction<LayoutState>) => {
+      state.components = action.payload.components;
     }
   },
 });
 
-export const { addComponent, selectComponent, updateStyles, deleteComponent, updateText, updateStyle } = layoutSlice.actions;
+export const {
+  addComponent,
+  selectComponent,
+  updateStyles,
+  deleteComponent,
+  updateText,
+  updateStyle,
+  setupComponents
+} = layoutSlice.actions;
 
 // Selectors
 export const selectComponents = (state: RootState) => state.layout.components;
 export const selectSelectedComponentId = (state: RootState) => state.layout.selectedComponentId;
 export const getSelectedComponentStyles = (state: RootState) => {
-  if(state.layout.selectedComponentId) {
+  if (state.layout.selectedComponentId) {
     return state.layout.components[state.layout.selectedComponentId].styles
   }
 }
 export const getSelectedComponent = (state: RootState) => {
-  if(state.layout.selectedComponentId) {
+  if (state.layout.selectedComponentId) {
     return state.layout.components[state.layout.selectedComponentId]
   }
 };
