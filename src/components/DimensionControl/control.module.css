@@ -1,0 +1,61 @@
+.label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.input {
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.arrow {
+  transform: rotate(0deg);
+  transition: transform 250ms;
+}
+
+.arrow[data-state=closed] {
+  transform: rotate(-90deg);
+}
+
+.addControls {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 1fr max-content 1fr;
+  grid-template-areas: 
+    'top top top'
+    'left button right'
+    'bottom bottom bottom';
+  ;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.box {
+  width: 100px;
+}
+
+.gridLeft {
+  grid-area: left;
+}
+
+.gridRight {
+  grid-area: right;
+}
+
+.gridButton {
+  display: flex;
+  grid-area: button;
+}
+
+.gridTop {
+  grid-area: top;
+}
+
+.gridBottom {
+  grid-area: bottom;
+}
+

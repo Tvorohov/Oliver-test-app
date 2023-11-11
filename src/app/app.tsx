@@ -1,67 +1,16 @@
-"use client"
+'use client'
 import React from 'react';
-import Section from '@/components/Section';
-import Button from '@/components/Button';
-import {  useDispatch, useSelector } from 'react-redux';
-import {  ComponentType, selectComponent, selectComponents } from '@/store/slices/layoutSlice';
-import { RootState } from '@/store/store';
 import { Controls } from '@/components/Controls';
 
-import cls from  './app.module.css';
+import { Flex } from '@radix-ui/themes';
+import { RenderComponets } from '@/components/RenderComponets';
 
 const App: React.FC = () => {
-  const components = useSelector((state: RootState) => selectComponents(state));
-  const dispatch = useDispatch();
-  const handleSelectComponent = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    event.stopPropagation();
-    const target = event.target as HTMLElement;
-    const { id } = target;
-      dispatch(selectComponent(id));
-  }
-
-  const renderComponent = (id: string) => {
-    const component = components[id]
-    if (!component) return null;
-    switch (component.type) {
-      case ComponentType.SECTION:
-        return (
-          <Section
-            key={id}
-            id={id}
-            styles={component.styles}
-          >
-            {component.children.map((childId) => renderComponent(childId))}
-          </Section>
-        );
-      case ComponentType.BUTTON:
-        return (
-          <Button
-            key={id}
-            id={id}
-            styles={component.styles}
-            text={component.text}
-          />
-        );
-      case ComponentType.ROOT:
-        return (
-          <div 
-            className={cls.root}
-            key={id} 
-            id={id} 
-            onClick={handleSelectComponent}>
-            {component.children.map((childId) => renderComponent(childId))}
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div>
+    <Flex>
       <Controls />
-      {renderComponent('root')}
-    </div>
+      < RenderComponets />
+    </Flex>
   );
 };
 

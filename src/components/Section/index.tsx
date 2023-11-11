@@ -1,5 +1,5 @@
-import { selectSelectedComponentId } from "@/store/slices/layoutSlice";
-import { useSelector } from "react-redux";
+import { selectSelectedComponentId } from '@/store/slices/layoutSlice';
+import { useSelector } from 'react-redux';
 
 import classes from './section.module.css';
 
@@ -9,7 +9,7 @@ interface SectionProps {
   styles?: React.CSSProperties;
 }
 
-const Section: React.FC<SectionProps> = ({id,  children, styles }) => {
+const Section: React.FC<SectionProps> = ({ id, children, styles }) => {
   const selectedComponentId = useSelector(selectSelectedComponentId);
 
   const isSelected = selectedComponentId === id;

@@ -1,5 +1,5 @@
-import { LayoutState } from "@/store/slices/layoutSlice";
-import { RootState } from "@/store/store";
+import { LayoutState } from '@/store/slices/layoutSlice';
+import { RootState } from '@/store/store';
 
 export const loadState = (): RootState | undefined => {
   if (typeof window === 'undefined') {

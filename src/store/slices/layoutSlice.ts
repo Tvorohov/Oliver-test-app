@@ -23,6 +23,7 @@ export interface ComponentProps {
   children: string[];
   styles: StyleProps;
   text?: string;
+  parentId?: string;
 }
 
 export interface LayoutState {
@@ -54,8 +55,11 @@ export const layoutSlice = createSlice({
         id: newId,
         type,
         children: [],
-        styles: {},
+        styles: {
+          backgroundColor: '#e8e7e7',
+        },
         text: type === ComponentType.BUTTON ? 'Button' : undefined,
+        parentId: state.selectedComponentId || 'root',
       };
 
       if (state.selectedComponentId) {
@@ -91,6 +95,12 @@ export const layoutSlice = createSlice({
         state.components[state.selectedComponentId].styles = { ...state.components[state.selectedComponentId].styles, ...styles };
       }
     },
+    updateStyle(state, action: PayloadAction<{ name: string; value: string }>) {
+      const { name, value } = action.payload;
+      if (state.selectedComponentId) {
+        state.components[state.selectedComponentId].styles[name] = value;
+      }
+    },
     updateText(state, action: PayloadAction<{ text: string }>) {
       const { text } = action.payload;
       if (state.selectedComponentId) {
@@ -100,12 +110,17 @@ export const layoutSlice = createSlice({
   },
 });
 
-export const { addComponent, selectComponent, updateStyles, deleteComponent, updateText } = layoutSlice.actions;
+export const { addComponent, selectComponent, updateStyles, deleteComponent, updateText, updateStyle } = layoutSlice.actions;
 
 // Selectors
 export const selectComponents = (state: RootState) => state.layout.components;
 export const selectSelectedComponentId = (state: RootState) => state.layout.selectedComponentId;
-export const getSelecterComponent = (state: RootState) => {
+export const getSelectedComponentStyles = (state: RootState) => {
+  if(state.layout.selectedComponentId) {
+    return state.layout.components[state.layout.selectedComponentId].styles
+  }
+}
+export const getSelectedComponent = (state: RootState) => {
   if(state.layout.selectedComponentId) {
     return state.layout.components[state.layout.selectedComponentId]
   }

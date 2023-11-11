@@ -1,0 +1,14 @@
+.container {
+  max-width: 100px;
+}
+
+.colorButton {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
