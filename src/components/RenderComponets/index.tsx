@@ -2,7 +2,7 @@ import { selectComponents, selectComponent, ComponentType } from '@/store/slices
 import { RootState } from '@/store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { RenderButton } from '../RenderButton';
-import Section from '../Section';
+import { RenderSection } from '../RenderSection';
 
 import cls from './style.module.css';
 
@@ -21,13 +21,13 @@ export const RenderComponets = () => {
     switch (component.type) {
       case ComponentType.SECTION:
         return (
-          <Section
+          <RenderSection
             key={id}
             id={id}
             styles={component.styles}
           >
             {component.children.map((childId) => renderComponent(childId))}
-          </Section>
+          </RenderSection>
         );
       case ComponentType.BUTTON:
         return (

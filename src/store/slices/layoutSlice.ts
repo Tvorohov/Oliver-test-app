@@ -57,6 +57,7 @@ export const layoutSlice = createSlice({
         children: [],
         styles: {
           backgroundColor: '#e8e7e7',
+          padding: '10px'
         },
         text: type === ComponentType.BUTTON ? 'Button' : undefined,
         parentId: state.selectedComponentId || 'root',

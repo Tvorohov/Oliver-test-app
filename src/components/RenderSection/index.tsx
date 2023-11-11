@@ -1,5 +1,6 @@
 import { selectSelectedComponentId } from '@/store/slices/layoutSlice';
 import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 
 import classes from './section.module.css';
 
@@ -9,20 +10,20 @@ interface SectionProps {
   styles?: React.CSSProperties;
 }
 
-const Section: React.FC<SectionProps> = ({ id, children, styles }) => {
+export const RenderSection: React.FC<SectionProps> = ({ id, children, styles }) => {
   const selectedComponentId = useSelector(selectSelectedComponentId);
 
-  const isSelected = selectedComponentId === id;
+  const sectionClasses = classNames(classes.section, {
+    [classes.selected]: selectedComponentId === id,
+  })
 
   return (
     <div
       id={id}
-      className={`${classes.section} ${isSelected ? classes.selected : ''}`}
+      className={sectionClasses}
       style={styles}
     >
       {children}
     </div>
   );
 };
-
-export default Section;
