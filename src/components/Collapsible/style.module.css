@@ -1,0 +1,8 @@
+.arrow {
+  transform: rotate(0deg);
+  transition: transform 250ms;
+}
+
+.arrow[data-state=closed] {
+  transform: rotate(-90deg);
+}

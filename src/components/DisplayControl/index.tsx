@@ -87,7 +87,7 @@ export const DisplayControl = () => {
         title='Display'
       />
       {display === 'flex' && (
-        <Flex direction='column' gap='1'>
+        <Flex direction='column' gap='1' pl='3'>
           {
             Object.keys(flexOptions).map((key: string) => {
               const { options, label } = flexOptions[key];
@@ -107,7 +107,7 @@ export const DisplayControl = () => {
       )}
 
       {display === 'grid' && (
-        <Flex direction='column' gap='1'>
+        <Flex direction='column' gap='1' pl='3'>
           {
             Object.keys(gridOptions).map((key: string) => {
               const { options, label } = gridOptions[key];

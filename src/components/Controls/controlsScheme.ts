@@ -3,6 +3,7 @@ export enum ControlType {
   DIMENSION_CONTROL = 'DIMENSION_CONTROL',
   COLOR_CONTROL = 'COLOR_CONTROL',
   DISPLAY_CONTROL = 'DISPLAY_CONTROL',
+  TYPOGRAPHY_CONTROL = 'TYPOGRAPHY_CONTROL',
 }
 
 export const styleControlMap = [
@@ -32,13 +33,13 @@ export const styleControlMap = [
     type: ControlType.COLOR_CONTROL,
   },
   {
-    label: 'Color',
-    name: 'color',
-    type: ControlType.COLOR_CONTROL,
-  },
-  {
     label: 'Display',
     name: 'display',
     type: ControlType.DISPLAY_CONTROL,
+  },
+  {
+    label: 'Typography',
+    name: 'typography',
+    type: ControlType.TYPOGRAPHY_CONTROL,
   }
 ]

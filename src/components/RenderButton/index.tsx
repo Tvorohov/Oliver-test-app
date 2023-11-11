@@ -1,8 +1,9 @@
 import { selectSelectedComponentId, updateText } from '@/store/slices/layoutSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 
-import classes from './button.module.css';
+import cls from './button.module.css';
 
 interface ButtonProps {
   id: string;
@@ -18,7 +19,6 @@ export const RenderButton = ({ id, text, styles, onClick }: ButtonProps) => {
   const [editableText, setEditableText] = useState(text);
   const selectedComponentId = useSelector(selectSelectedComponentId);
   const dispatch = useDispatch();
-  const isSelected = selectedComponentId === id;
 
   const handleDoubleClick = () => {
     setIsEditing(true);
@@ -41,13 +41,17 @@ export const RenderButton = ({ id, text, styles, onClick }: ButtonProps) => {
     }
   };
 
+  const buttonClass = classNames(cls.button, {
+    [cls.selected]: selectedComponentId === id,
+  })
+
   return (
     <button
       id={id}
       style={styles}
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
-      className={`${classes.button} ${isSelected ? classes.selected : ''}`}
+      className={buttonClass}
     >
       {isEditing ? (
         <input
