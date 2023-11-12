@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Select } from '../Select';
 import { getSelectedComponentStyles, updateStyle } from '@/store/slices/layoutSlice';
+import { Collapsible } from '../Collapsible';
 
 interface DisplayPropertyOptions {
   [key: string]: {
@@ -60,6 +61,11 @@ const gridOptions: DisplayPropertyOptions = {
   },
 }
 
+const displayOptionsMap: { [key: string]: DisplayPropertyOptions } = {
+  flex: flexOptions,
+  grid: gridOptions,
+};
+
 export const DisplayControl = () => {
   const [display, setDisplay] = useState<string>('block');
   const dispatch = useDispatch();
@@ -70,47 +76,33 @@ export const DisplayControl = () => {
     if (styles?.display) {
       setDisplay(styles.display);
     }
-  }, [styles])
+  }, [styles?.display])
 
   const handleDisplayChange = (value: string) => {
     setDisplay(value);
     dispatch(updateStyle({ name: 'display', value }))
   }
 
-  return (
-    <>
-      <Select
-        options={displayOptions}
-        value={display}
-        onChange={handleDisplayChange}
-        size='1'
-        title='Display'
-      />
-      {display === 'flex' && (
-        <Flex direction='column' gap='1' pl='3'>
-          {
-            Object.keys(flexOptions).map((key: string) => {
-              const { options, label } = flexOptions[key];
-              return (
-                <Select
-                  title={label}
-                  key={key}
-                  options={options}
-                  value={styles?.[key] ?? options[0]}
-                  onChange={(value) => dispatch(updateStyle({ name: key, value }))}
-                  size='1'
-                />
-              )
-            })
-          }
-        </Flex>
-      )}
+  const currentOptions = displayOptionsMap[display];
 
-      {display === 'grid' && (
+  return (
+    <Collapsible
+      label='Display'
+      slot={
+        <Select
+          options={displayOptions}
+          value={display}
+          onChange={handleDisplayChange}
+          size='1'
+        />
+      }
+    >
+
+      {currentOptions && (
         <Flex direction='column' gap='1' pl='3'>
           {
-            Object.keys(gridOptions).map((key: string) => {
-              const { options, label } = gridOptions[key];
+            Object.keys(currentOptions).map((key: string) => {
+              const { options, label } = currentOptions[key];
               return (
                 <Select
                   title={label}
@@ -125,6 +117,6 @@ export const DisplayControl = () => {
           }
         </Flex>
       )}
-    </>
+    </Collapsible>
   )
 }

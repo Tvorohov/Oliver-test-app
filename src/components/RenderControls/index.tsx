@@ -3,6 +3,7 @@ import { ControlType } from '../Controls/controlsScheme'
 import { DimensionControl } from '../DimensionControl';
 import { DisplayControl } from '../DisplayControl';
 import { InlineInput } from '../InlineInput';
+import { PositionControl } from '../PositionControl';
 import { TypographyControl } from '../TypographyControl';
 
 interface RenderControlsProps {
@@ -27,6 +28,8 @@ export const RenderControls = ({
       return <TypographyControl />;
     case ControlType.BACKGROUND_CONTROL:
       return <BackgroundControl />;
+    case ControlType.POSITION_CONTROL:
+      return <PositionControl />
     default:
       return null;
   }

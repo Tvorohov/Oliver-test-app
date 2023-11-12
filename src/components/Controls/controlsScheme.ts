@@ -3,7 +3,8 @@ export enum ControlType {
   DIMENSION_CONTROL = 'DIMENSION_CONTROL',
   DISPLAY_CONTROL = 'DISPLAY_CONTROL',
   TYPOGRAPHY_CONTROL = 'TYPOGRAPHY_CONTROL',
-  BACKGROUND_CONTROL = 'BACKGROUND_CONTROL'
+  BACKGROUND_CONTROL = 'BACKGROUND_CONTROL',
+  POSITION_CONTROL = 'POSITION_CONTROL'
 }
 
 export const styleControlMap = [
@@ -41,5 +42,10 @@ export const styleControlMap = [
     label: 'Background',
     name: 'background',
     type: ControlType.BACKGROUND_CONTROL,
+  },
+  {
+    label: 'Position',
+    name: 'position',
+    type: ControlType.POSITION_CONTROL
   }
 ]

@@ -1,0 +1,38 @@
+.addControls {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 1fr max-content 1fr;
+  grid-template-areas:
+    'top top top'
+    'left button right'
+    'bottom bottom bottom';
+  ;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.box {
+  width: 100px;
+}
+
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
+}
+
+.gridButton {
+  display: flex;
+  grid-area: button;
+}
+
+.top {
+  grid-area: top;
+}
+
+.bottom {
+  grid-area: bottom;
+}

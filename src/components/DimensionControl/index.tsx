@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Maximize, Minimize } from 'react-feather';
+import { Maximize } from 'react-feather';
 
 import { Collapsible } from '../Collapsible';
 
-import cls from './control.module.css';
-import { Flex, IconButton, Text } from '@radix-ui/themes';
+import { Flex, IconButton } from '@radix-ui/themes';
 import { DimensionInput } from '../DimensionInput';
+import { AdditionalDimensionControl } from '../AdditionalDimensionControl';
 
 interface DimensionControlProps {
   label: string;
@@ -22,33 +22,27 @@ export const DimensionControl = ({ label, name }: DimensionControlProps) => {
     <Collapsible label={label}>
       {
         showAdditionalControl ? (
-          <div className={cls.addControls}>
-            <div className={cls.gridButton}>
-              <IconButton variant="ghost" color="gray" onClick={toggleAdditionalControl}>
-                <Minimize size={14} />
-              </IconButton>
-            </div>
-            <div className={cls.gridLeft}>
-              <DimensionInput
-                name={name + 'Left'}
-              />
-            </div>
-            <div className={cls.gridRight}>
-              <DimensionInput
-                name={name + 'Right'}
-              />
-            </div>
-            <div className={cls.gridTop}>
-              <DimensionInput
-                name={name + 'Top'}
-              />
-            </div>
-            <div className={cls.gridBottom}>
-              <DimensionInput
-                name={name + 'Bottom'}
-              />
-            </div>
-          </div>
+          <AdditionalDimensionControl
+            onClick={toggleAdditionalControl}
+            options={[
+              {
+                name: name + 'Left',
+                position: 'left'
+              },
+              {
+                name: name + 'Right',
+                position: 'right'
+              },
+              {
+                name: name + 'Top',
+                position: 'top'
+              },
+              {
+                name: name + 'Bottom',
+                position: 'bottom'
+              },
+            ]}
+          />
         ) : (
           <Flex mt='2' align='center' gap='2'>
             <IconButton variant="ghost" color='gray' onClick={toggleAdditionalControl}>

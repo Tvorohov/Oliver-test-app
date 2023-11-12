@@ -4,7 +4,7 @@ interface SelectProps {
   options: string[];
   value: string;
   onChange: (value: string) => void;
-  title: string
+  title?: string
   size?: Responsive<'1' | '2' | '3'> | undefined;
 }
 
@@ -12,9 +12,11 @@ export const Select = ({ value, options, onChange, size = '2', title }: SelectPr
 
   return (
     <Flex align='center' gap='3'>
-      <Text size='2' weight='bold' className='box-width'>
-        {title}:
-      </Text>
+      {title && (
+        <Text size='2' weight='bold' className='box-width'>
+          {title}:
+        </Text>
+      )}
       <RadixSelect.Root
         value={value}
         onValueChange={onChange}
