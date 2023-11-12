@@ -1,11 +1,20 @@
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ComponentType, addComponent, deleteComponent, getSelectedComponent, updateText } from '@/store/slices/layoutSlice';
+import { Box, Button, Flex, IconButton } from '@radix-ui/themes';
+import { Trash2 } from 'react-feather';
+import {
+  ComponentType,
+  addComponent,
+  deleteComponent,
+  getSelectedComponent
+} from '@/store/slices/layoutSlice';
 
-import cls from './controls.module.css';
+
 import { styleControlMap } from './controlsScheme';
 import { RenderControls } from '../RenderControls';
+
+import cls from './controls.module.css';
 
 export const Controls = () => {
   const dispatch = useDispatch();
@@ -23,29 +32,19 @@ export const Controls = () => {
 
   return (
     <div className={cls.sidebar}>
-      <div className={cls.container}>
-        <div className={cls.buttonWrapper}>
-          <button
-            onClick={() => handleAddComponent(ComponentType.SECTION)}
-            className={cls.controlButton}
-          >
+      <Box height='100%' p='4' className={cls.container}>
+        <Flex align='center' gap='3'>
+          <Button size="1" variant="solid" onClick={() => handleAddComponent(ComponentType.SECTION)}>
             Add Section
-          </button>
-          <button
-            onClick={() => handleAddComponent(ComponentType.BUTTON)}
-            className={cls.controlButton}>
+          </Button>
+          <Button size="1" variant="solid" onClick={() => handleAddComponent(ComponentType.BUTTON)}>
             Add Button
-          </button>
-          {selectedComponent && (
-            <button
-              onClick={handleDeleteComponent}
-              className={cls.controlButton}>
-              Delete
-            </button>
-          )}
-        </div>
-
-        <div className={cls.controls}>
+          </Button>
+          <IconButton size='1' variant='ghost' onClick={handleDeleteComponent}>
+            <Trash2 width={14} height={14} />
+          </IconButton>
+        </Flex>
+        <Flex direction='column' gap='3' mt='4'>
           {selectedComponent && (
             <>
               {styleControlMap.map(({ name, label, type }) => {
@@ -57,8 +56,8 @@ export const Controls = () => {
               })}
             </>
           )}
-        </div>
-      </div>
+        </Flex>
+      </Box>
     </div>
   )
 }
