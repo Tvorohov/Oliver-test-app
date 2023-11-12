@@ -4,6 +4,7 @@ import { RootState } from '../store';
 export enum ComponentType {
   SECTION = 'section',
   BUTTON = 'button',
+  TEXT = 'text',
   ROOT = 'root',
 }
 
@@ -56,7 +57,7 @@ export const layoutSlice = createSlice({
         type,
         children: [],
         styles: {
-          backgroundColor: '#e8e7e7',
+          backgroundColor: type === ComponentType.TEXT ? undefined : '#e8e7e7',
           padding: '10px',
           display: 'block',
           position: 'relative'

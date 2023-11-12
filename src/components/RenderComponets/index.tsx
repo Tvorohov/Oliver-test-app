@@ -3,6 +3,7 @@ import { RootState } from '@/store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { RenderButton } from '../RenderButton';
 import { RenderSection } from '../RenderSection';
+import { RenderText } from '../RenderText';
 
 import cls from './style.module.css';
 
@@ -32,6 +33,15 @@ export const RenderComponets = () => {
       case ComponentType.BUTTON:
         return (
           <RenderButton
+            key={id}
+            id={id}
+            styles={component.styles}
+            text={component.text}
+          />
+        );
+      case ComponentType.TEXT:
+        return (
+          <RenderText
             key={id}
             id={id}
             styles={component.styles}

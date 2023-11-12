@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Select } from '../Select';
 import { getSelectedComponentStyles, updateStyle } from '@/store/slices/layoutSlice';
 import { Collapsible } from '../Collapsible';
+import { InlineInput } from '../InlineInput';
 
 interface DisplayPropertyOptions {
   [key: string]: {
@@ -115,6 +116,10 @@ export const DisplayControl = () => {
               )
             })
           }
+          <InlineInput
+            label='Gap'
+            name='gap'
+          />
         </Flex>
       )}
     </Collapsible>

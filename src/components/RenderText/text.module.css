@@ -1,0 +1,9 @@
+.selected {
+  box-shadow: inset 0px 0px 0px 2px blue;
+}
+
+.input {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}

@@ -14,7 +14,6 @@ interface CollapsibleProps {
 
 export const Collapsible = ({ label, slot, children }: CollapsibleProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  console.log(label, children)
   const hasValidChildren = React.Children.toArray(children).some(child => child);
 
   return (

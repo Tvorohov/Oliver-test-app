@@ -1,18 +1,17 @@
-import { selectSelectedComponentId, updateText } from '@/store/slices/layoutSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectSelectedComponentId, updateText } from '@/store/slices/layoutSlice';
 import classNames from 'classnames';
 
-import cls from './button.module.css';
+import cls from './text.module.css';
 
-interface ButtonProps {
+interface TextProps {
   id: string;
   styles?: React.CSSProperties;
-  onClick?: () => void;
   text?: string;
 }
 
-export const RenderButton = ({ id, text, styles, onClick }: ButtonProps) => {
+export const RenderText = ({ id, text, styles }: TextProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editableText, setEditableText] = useState(text);
   const selectedComponentId = useSelector(selectSelectedComponentId);
@@ -29,40 +28,33 @@ export const RenderButton = ({ id, text, styles, onClick }: ButtonProps) => {
   const handleBlur = () => {
     setIsEditing(false);
     if (editableText) {
-      dispatch(updateText(editableText))
+      dispatch(updateText(editableText));
     }
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (!isEditing && onClick) {
-      onClick();
-    }
-  };
-
-  const buttonClass = classNames(cls.button, {
+  const textClass = classNames(cls.text, {
     [cls.selected]: selectedComponentId === id,
-  })
+  });
 
   return (
-    <button
+    <p
       id={id}
       style={styles}
-      onClick={handleClick}
       onDoubleClick={handleDoubleClick}
-      className={buttonClass}
+      className={textClass}
     >
       {isEditing ? (
         <input
-          type="text"
+          type='text'
           value={editableText}
           onChange={handleTextChange}
           onBlur={handleBlur}
           autoFocus
-          name='text'
+          className={cls.input}
         />
       ) : (
-        editableText
+        editableText || 'Double-click to edit text'
       )}
-    </button>
-  )
-}
+    </p>
+  );
+};

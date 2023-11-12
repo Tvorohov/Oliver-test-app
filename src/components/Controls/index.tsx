@@ -40,6 +40,9 @@ export const Controls = () => {
           <Button size="1" variant="solid" onClick={() => handleAddComponent(ComponentType.BUTTON)}>
             Add Button
           </Button>
+          <Button size="1" variant="solid" onClick={() => handleAddComponent(ComponentType.TEXT)}>
+            Add Text
+          </Button>
           <IconButton size='1' variant='ghost' onClick={handleDeleteComponent}>
             <Trash2 width={14} height={14} />
           </IconButton>

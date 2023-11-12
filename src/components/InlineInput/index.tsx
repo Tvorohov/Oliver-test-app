@@ -6,7 +6,6 @@ import { Flex, Text } from '@radix-ui/themes';
 type InlineInputProps = {
   label: string;
   name: string;
-
 };
 
 export const InlineInput = ({ label, name }: InlineInputProps) => {
