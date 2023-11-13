@@ -1,4 +1,4 @@
-import { Popover, TextField } from '@radix-ui/themes'
+import { Flex, Popover, TextField } from '@radix-ui/themes'
 import { ChangeEvent, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 
@@ -25,25 +25,26 @@ export const ColorInput = ({ value = defaultColor, onChange }: ColorInputProps) 
 
   return (
     <div className={cls.container}>
-      <TextField.Root>
-        <TextField.Slot pr="1" >
-          <Popover.Root>
-            <Popover.Trigger>
-              <button
-                className={cls.colorButton}
-                style={{ backgroundColor: value }} />
-            </Popover.Trigger>
-            <Popover.Content>
-              <HexColorPicker color={value} onChange={handleColorChange} />
-            </Popover.Content>
-          </Popover.Root>
-        </TextField.Slot>
-        <TextField.Input
-          size="1"
-          value={color}
-          onChange={handleOnChange}
-        />
-      </TextField.Root>
+      <Flex align='center'>
+        <Popover.Root>
+          <Popover.Trigger>
+            <button
+              className={cls.colorButton}
+              style={{ backgroundColor: value }} />
+          </Popover.Trigger>
+          <Popover.Content>
+            <HexColorPicker color={value} onChange={handleColorChange} />
+          </Popover.Content>
+        </Popover.Root>
+        <TextField.Root >
+          <TextField.Input
+            size="1"
+            value={color}
+            onChange={handleOnChange}
+            className={cls.input}
+          />
+        </TextField.Root>
+      </Flex>
     </div>
   )
 }
